@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "dist/js", // Diretorio onde vai ser colocados os arquivos compilados
+        "target": "ES6", // Linguagem de compilação
+        "noEmitOnError": true, // Não compila enquanto o typescript tiver erros
+        "noImplicitAny": true // Não aceita o tipo any
+    },
+    "include": [
+        "app/**/*" // Tydo que esta dentro de app será compilado
+    ]
+}
