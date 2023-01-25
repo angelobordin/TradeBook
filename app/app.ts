@@ -6,3 +6,4 @@ form.addEventListener('submit', event => {
     event.preventDefault();
     negociacaoController.addNegociacao();
 });
+
