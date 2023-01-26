@@ -5,8 +5,10 @@ export class Negociacoes {
     addNegociacao(negociacao) {
         this.negociacoesList.push(negociacao);
     }
+    ;
     getNegociacoesList() {
         return this.negociacoesList;
     }
+    ;
 }
 ;
