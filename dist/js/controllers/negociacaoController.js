@@ -1,18 +1,20 @@
 import { Negociacoes } from '../models/Negociacoes.js';
 import { Negociacao } from '../models/Negociacao.js';
+import { NegociacoesView } from '../views/NegociacoesView.js';
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
+        this.negociacoesView = new NegociacoesView('#Negociacoes');
         this.data = document.querySelector('#data');
         this.quantidade = document.querySelector('#quantidade');
         this.valor = document.querySelector('#valor');
+        this.negociacoesView.update(this.negociacoes);
     }
     ;
     addNegociacao() {
         const newNegociacao = this.createNegociacao();
-        newNegociacao.data.setDate(12);
         this.negociacoes.addNegociacao(newNegociacao);
-        console.log(newNegociacao);
+        this.negociacoesView.update(this.negociacoes);
         this.clearForm();
     }
     ;
@@ -26,8 +28,8 @@ export class NegociacaoController {
     ;
     clearForm() {
         this.data.value = null;
-        this.quantidade.value = null;
-        this.valor.value = null;
+        this.quantidade.value = '1';
+        this.valor.value = '0.0';
         this.data.focus(); // Voltar o cursor para o input data;
     }
     ;
