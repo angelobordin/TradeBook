@@ -1,4 +1,4 @@
-export class Negociacao {
+export class TradeModel {
     constructor(date, quantity, value) {
         this._dateOfTrade = date;
         this.quantityOfTrade = quantity;
@@ -25,7 +25,7 @@ export class Negociacao {
             const formatedDate = new Date(tradedAt.replaceAll('-', ','));
             const formatedQuantity = parseInt(quantity);
             const formatedValue = parseFloat(tradedValue);
-            return new Negociacao(formatedDate, formatedQuantity, formatedValue);
+            return new TradeModel(formatedDate, formatedQuantity, formatedValue);
         }
         catch (error) {
             throw new Error(error);

@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
-        "outDir": "dist/js", // Diretorio onde vai ser colocados os arquivos compilados
-        "target": "ES6", // Linguagem de compilação
-        "noEmitOnError": true, // Não compila enquanto o typescript tiver erros
-        "noImplicitAny": true // Não aceita o tipo any
+        "outDir": "dist/js",    // Diretório onde vão ser criados os arquivos compilados;
+        "target": "ESNext",     // Linguagem de compilação;
+        "noEmitOnError": true,  // Se 'true' não irá compilar enquanto o typescript conter erros;
+        "noImplicitAny": true,  // Se 'true' não irá aceitar o tipo any definido implicitamente (tudo precisa ser tipado);
+        "removeComments": true, // Remove comentários quando compilar os arquivos;
+        "strictNullChecks": false // Se 'true' força o desenvolvedor a tratar váriaveis que possam ser nulas;
     },
     "include": [
-        "app/**/*" // Tydo que esta dentro de app será compilado
+        "app/**/*" // Tudo que está dentro de app será compilado;
     ]
 }

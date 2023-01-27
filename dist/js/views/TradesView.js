@@ -11,12 +11,12 @@ export class TradesView extends View {
                     </tr>
                 </thead>
                 <tbody>
-                    ${model.getNegociacoesList().map(negociacao => {
+                    ${model.getTradesList().map(trade => {
             return `
                             <tr>
-                                <td>${this.formatDate(negociacao.date)}</td>
-                                <td>${negociacao.quantityOfTrade}</td>
-                                <td>${negociacao.totalValueOfTrade}</td>
+                                <td>${this.formatDate(trade.date)}</td>
+                                <td>${trade.quantityOfTrade}</td>
+                                <td>${trade.totalValueOfTrade}</td>
                             </tr>
                         `;
         }).join('')}
@@ -24,8 +24,8 @@ export class TradesView extends View {
             </table>`;
     }
     ;
-    formatDate(data) {
-        return new Intl.DateTimeFormat().format(data);
+    formatDate(date) {
+        return new Intl.DateTimeFormat().format(date);
     }
     ;
 }
