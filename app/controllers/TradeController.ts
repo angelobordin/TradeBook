@@ -26,7 +26,7 @@ export class TradeController {
                 this.messageView.update('Apenas negociações em dias uteis são aceitas');
                 return;
             };
-
+ 
             this.tradesList.addTrade(newTradeRegister);
             this.tradesView.update(this.tradesList);
             this.messageView.update('Negociação Adicionada com sucesso!');
