@@ -1,9 +1,9 @@
 import { TradeController } from "./controllers/TradeController.js";
 
 const form = document.querySelector('.form');
-const tradedAt: HTMLInputElement = document.querySelector('#data');
-const quantity: HTMLInputElement = document.querySelector('#quantidade');
-const tradedValue: HTMLInputElement = document.querySelector('#valor');
+const tradedAt = <HTMLInputElement>document.querySelector('#data');
+const quantity = <HTMLInputElement>document.querySelector('#quantidade');
+const tradedValue = <HTMLInputElement>document.querySelector('#valor');
 const tradeController = new TradeController();
 
 form.addEventListener('submit', event => {
