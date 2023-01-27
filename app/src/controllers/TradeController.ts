@@ -3,6 +3,7 @@ import { TradeModel } from '../models/TradeModel.js';
 import { TradesView } from '../views/TradesView.js';
 import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
+import { measureRuntime } from '../decorators/measureRuntime.js';
 
 export class TradeController {
     private tradesList = new TradesModel();
@@ -13,6 +14,7 @@ export class TradeController {
         this.tradesView.update(this.tradesList);
     };
 
+    @measureRuntime()
     public addNewTrade(tradedAt: string, quantity: string, tradedValue: string): void {
         try {
             if (!tradedAt) throw new Error(`tradedAt is missing!`);

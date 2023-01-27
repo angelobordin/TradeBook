@@ -5,7 +5,8 @@
         "noEmitOnError": true,  // Se 'true' não irá compilar enquanto o typescript conter erros;
         "noImplicitAny": true,  // Se 'true' não irá aceitar o tipo any definido implicitamente (tudo precisa ser tipado);
         "removeComments": true, // Remove comentários quando compilar os arquivos;
-        "strictNullChecks": false // Se 'true' força o desenvolvedor a tratar váriaveis que possam ser nulas;
+        "strictNullChecks": false, // Se 'true' força o desenvolvedor a tratar váriaveis que possam ser nulas;
+        "experimentalDecorators": true // Se 'true' defini que vamos utilizar decorators no projeto;
     },
     "include": ["app/src/**/*"]  // Tudo que está dentro de app será compilado;
 }
