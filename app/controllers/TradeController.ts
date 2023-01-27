@@ -29,7 +29,7 @@ export class TradeController {
 
             this.tradesList.addTrade(newTradeRegister);
             this.tradesView.update(this.tradesList);
-            this.messageView.update('Negociação Adicionada com sucesso!')
+            this.messageView.update('Negociação Adicionada com sucesso!');
         } catch (error) {
             throw new Error(error);
         }
