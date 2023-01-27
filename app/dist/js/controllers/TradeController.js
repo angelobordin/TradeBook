@@ -10,6 +10,7 @@ import { TradesView } from '../views/TradesView.js';
 import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
 import { measureRuntime } from '../decorators/measureRuntime.js';
+import { inspectMethod } from '../decorators/inspectMethod.js';
 export class TradeController {
     constructor() {
         this.tradesList = new TradesModel();
@@ -44,6 +45,7 @@ export class TradeController {
     ;
 }
 __decorate([
+    inspectMethod(),
     measureRuntime()
 ], TradeController.prototype, "addNewTrade", null);
 ;

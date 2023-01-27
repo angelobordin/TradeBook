@@ -4,6 +4,7 @@ import { TradesView } from '../views/TradesView.js';
 import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
 import { measureRuntime } from '../decorators/measureRuntime.js';
+import { inspectMethod } from '../decorators/inspectMethod.js';
 
 export class TradeController {
     private tradesList = new TradesModel();
@@ -14,6 +15,7 @@ export class TradeController {
         this.tradesView.update(this.tradesList);
     };
 
+    @inspectMethod()
     @measureRuntime()
     public addNewTrade(tradedAt: string, quantity: string, tradedValue: string): void {
         try {
