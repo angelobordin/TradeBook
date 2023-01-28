@@ -1,4 +1,4 @@
-// Função decorator para medir a performance dos métodos;
+// Função decorator para medir a performance/velocidade de execução dos métodos;
 export function measureRuntime(param: boolean = false) {
     return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;

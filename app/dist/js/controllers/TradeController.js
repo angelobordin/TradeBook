@@ -10,7 +10,7 @@ import { TradesView } from '../views/TradesView.js';
 import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
 import { measureRuntime } from '../decorators/measureRuntime.js';
-import { inspectMethod } from '../decorators/inspectMethod.js';
+import { domInjector } from '../decorators/domInjector.js';
 export class TradeController {
     constructor() {
         this.tradesList = new TradesModel();
@@ -19,15 +19,9 @@ export class TradeController {
         this.tradesView.update(this.tradesList);
     }
     ;
-    addNewTrade(tradedAt, quantity, tradedValue) {
+    addNewTrade() {
         try {
-            if (!tradedAt)
-                throw new Error(`tradedAt is missing!`);
-            if (!quantity)
-                throw new Error(`quantity is missing`);
-            if (!tradedValue)
-                throw new Error(`tradedValue is missing!`);
-            const newTradeRegister = TradeModel.createTrade(tradedAt, quantity, tradedValue);
+            const newTradeRegister = TradeModel.createTrade(this.tradedAt.value, this.quantity.value, this.tradedValue.value);
             const dayOfWeek = newTradeRegister.date.getDay();
             if (dayOfWeek == DaysOfWeek.SUNDAY || dayOfWeek == DaysOfWeek.SATURDAY) {
                 this.messageView.update('Apenas negociações em dias uteis são aceitas');
@@ -45,7 +39,15 @@ export class TradeController {
     ;
 }
 __decorate([
-    inspectMethod(),
+    domInjector('#data')
+], TradeController.prototype, "tradedAt", void 0);
+__decorate([
+    domInjector('#quantidade')
+], TradeController.prototype, "quantity", void 0);
+__decorate([
+    domInjector('#valor')
+], TradeController.prototype, "tradedValue", void 0);
+__decorate([
     measureRuntime()
 ], TradeController.prototype, "addNewTrade", null);
 ;

@@ -4,9 +4,17 @@ import { TradesView } from '../views/TradesView.js';
 import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
 import { measureRuntime } from '../decorators/measureRuntime.js';
-import { inspectMethod } from '../decorators/inspectMethod.js';
+import { domInjector } from '../decorators/domInjector.js';
 
 export class TradeController {
+    @domInjector('#data')
+    private tradedAt: HTMLInputElement;
+
+    @domInjector('#quantidade')
+    private quantity: HTMLInputElement;
+
+    @domInjector('#valor')
+    private tradedValue: HTMLInputElement;
     private tradesList = new TradesModel();
     private tradesView = new TradesView('#Negociacoes');
     private messageView = new MessageView('#mensagemView');
@@ -15,15 +23,10 @@ export class TradeController {
         this.tradesView.update(this.tradesList);
     };
 
-    @inspectMethod()
     @measureRuntime()
-    public addNewTrade(tradedAt: string, quantity: string, tradedValue: string): void {
+    public addNewTrade(): void {
         try {
-            if (!tradedAt) throw new Error(`tradedAt is missing!`);
-            if (!quantity) throw new Error(`quantity is missing`);
-            if (!tradedValue) throw new Error(`tradedValue is missing!`);
-
-            const newTradeRegister = TradeModel.createTrade(tradedAt, quantity, tradedValue);
+            const newTradeRegister = TradeModel.createTrade(this.tradedAt.value, this.quantity.value, this.tradedValue.value);
             const dayOfWeek = newTradeRegister.date.getDay();
 
             if (dayOfWeek == DaysOfWeek.SUNDAY || dayOfWeek == DaysOfWeek.SATURDAY) {
