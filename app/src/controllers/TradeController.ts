@@ -5,6 +5,7 @@ import { MessageView } from '../views/MessageView.js';
 import { DaysOfWeek } from '../enums/DaysOfWeek.js';
 import { measureRuntime } from '../decorators/measureRuntime.js';
 import { domInjector } from '../decorators/domInjector.js';
+import { TradesService } from '../services/TradesService.js';
 
 export class TradeController {
     @domInjector('#data')
@@ -18,6 +19,7 @@ export class TradeController {
     private tradesList = new TradesModel();
     private tradesView = new TradesView('#Negociacoes');
     private messageView = new MessageView('#mensagemView');
+    private tradeService = new TradesService();
 
     constructor() {
         this.tradesView.update(this.tradesList);
@@ -40,5 +42,17 @@ export class TradeController {
         } catch (error) {
             throw new Error(error);
         }
+    };
+
+    public async importData(): Promise<void> {
+        try {
+            const tradeList = await this.tradeService.getTradeList();
+            for (const trade of tradeList) {
+                this.tradesList.addTrade(trade)
+            };
+            this.tradesView.update(this.tradesList);
+        } catch (error) {
+            throw new Error(error);
+        };
     };
 };
