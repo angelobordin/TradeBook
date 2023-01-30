@@ -4,7 +4,7 @@ export function domInjector(selector: string) {
         let element: HTMLElement;
 
         const getter = function() {
-            // Utilizo o elemento em cache para visualizar se este já existe;
+            // Verifica se o elemento ja existe em cache para não realizar busca desnecessárias;
             if (!element) element = document.querySelector(selector); 
             return element;
         };

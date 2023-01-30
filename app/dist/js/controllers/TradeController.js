@@ -41,7 +41,15 @@ export class TradeController {
     ;
     async importData() {
         try {
-            const tradeList = await this.tradeService.getTradeList();
+            let tradeList = await this.tradeService.getTradeList();
+            if (tradeList) {
+                tradeList = tradeList.filter(trade => {
+                    return !this.tradesList.getTradesList().some(x => x.isDuplicated(trade));
+                });
+                if (!tradeList.length)
+                    alert('Negociações duplicadas não serão importadas!');
+            }
+            ;
             for (const trade of tradeList) {
                 this.tradesList.addTrade(trade);
             }

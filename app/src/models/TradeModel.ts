@@ -33,4 +33,15 @@ export class TradeModel {
             throw new Error(error);   
         }
     };
+
+    public isDuplicated(trade: TradeModel): boolean {
+        try {
+            if (!trade) throw new Error(`trade is missing!`);
+            return this.date.getDate() === trade.date.getDate()
+                && this.date.getMonth() === trade.date.getMonth()
+                && this.date.getFullYear() === trade.date.getFullYear();
+        } catch (error) {
+            throw new Error(error);   
+        }
+    };
 };

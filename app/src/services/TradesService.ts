@@ -1,4 +1,4 @@
-import { ITrade } from '../interfaces/trade.js';
+import { ITrade } from '../interfaces/Trade.js';
 import { TradeModel } from './../models/TradeModel.js';
 
 export class TradesService {
